@@ -15,7 +15,8 @@
 
 
 const randomNumbers = document.getElementById("random-numbers");
-const numRandom = generateRandomNumbersArray(1, 100, 5);
+const alertEl = document.getElementById("sostituto-alert");
+const numRandom = getRandomNumbers(1, 50, 5);
 
 
 
@@ -35,13 +36,14 @@ function userGuess(){
             alert("Mi dispiace ma i numeri inseriti non sono corretti, riprova", userNum);
         }else{
             randomNumbers.classList.add("d-block");
-            randomNumbers.classList.add("text-danger");
-            alert("congratulazioni! hai indovinato questi numeri:", userNum);
+            alertEl.classList.add("text-danger");
+            alertEl.innerHTML = `Questi sono i numeri che hai scelto <br> ${userNum} vs ${numRandom.join(" ")}`;
+            alertEl.append(randomNumbers);
         }
     
 }
 
-function generateRandomNumbersArray (min, max, length) {
+function getRandomNumbers (min, max, length) {
     const array = [];
 
     while (array.length < length) {
