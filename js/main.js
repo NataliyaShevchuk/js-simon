@@ -22,12 +22,12 @@ const numRandom = getRandomNumbers(1, 50, 5);
 
 randomNumbers.innerHTML = `<div class="m-3">${numRandom.join('  ')}</div>`;
 
-setTimeout(startTimer, 3000);
+setTimeout(startTimer, 30000);
 
 function startTimer(){
     randomNumbers.classList.add("d-none");
 }
-setTimeout(userGuess, 3500);
+setTimeout(userGuess, 35000);
 
 function userGuess(){
     const userNum = prompt("che numero ti ricordi?");
