@@ -13,13 +13,13 @@
 // 3. Alla fine dei 30s far scomparire i numeri e far uscire un promt 
 // 4. Verificare se l'utente has azzecato = il software deve dire quanti e quali numeri sono stati indovinati 
 
-const arrayNum = ["5", "25", "50", "55", "555"];
+
 const randomNumbers = document.getElementById("random-numbers");
+const numRandom = generateRandomNumbersArray(1, 100, 5);
 
 
-console.log(arrayNum);
 
-randomNumbers.innerHTML = `<div class="m-3">${arrayNum.join('  ')}</div>`;
+randomNumbers.innerHTML = `<div class="m-3">${numRandom.join('  ')}</div>`;
 
 setTimeout(startTimer, 3000);
 
@@ -31,7 +31,7 @@ setTimeout(userGuess, 3500);
 function userGuess(){
     const userNum = prompt("che numero ti ricordi?");
     
-        if(arrayNum.length === userNum){
+        if(numRandom === userNum){
             alert("Mi dispiace ma i numeri inseriti non sono corretti, riprova", userNum);
         }else{
             randomNumbers.classList.add("d-block");
@@ -41,5 +41,18 @@ function userGuess(){
     
 }
 
+function generateRandomNumbersArray (min, max, length) {
+    const array = [];
+
+    while (array.length < length) {
+      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+        if (!array.includes(randomNumber)) {
+        array.push(randomNumber);
+        }
+    }
+
+    return array;
+}
 
 
